@@ -6,7 +6,7 @@ Mac chat viewer for Claude chats you save with
 Sessions on the left, transcript on the right. Search, star, copy, and add notes.
 Saved `.jsonl` files are opened read-only.
 
-![DBV showing excerpt of real chat](docs/images/dbv.png)
+![DBV showing that same saved chat](docs/images/dbv.png)
 
 ## Build
 
