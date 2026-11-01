@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Background: rounded-square field, deep blue -> near-black, echoing DBV's own
+       accentColor bubble tint (Color.accentColor.opacity(0.15) on user bubbles). -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2f6fed"/>
+      <stop offset="100%" stop-color="#12141c"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="24" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="224" fill="url(#bg)"/>
+
+  <!-- Two chat bubbles, stacked and offset left/right — the literal shape
+       MessageBubbleView renders (assistant bubble left, user bubble right). -->
+  <g filter="url(#cardShadow)">
+    <rect x="232" y="360" width="420" height="140" rx="42" fill="#f6f7f9" opacity="0.94"/>
+    <rect x="372" y="524" width="420" height="140" rx="42" fill="#eaf1ff"/>
+  </g>
+
+  <!-- Three text-line bars inside each bubble, echoing the compact rendered rows
+       (role label + text) that DescribeToolUse/RenderContentBlock produce. -->
+  <rect x="272" y="404" width="220" height="24" rx="12" fill="#12141c" opacity="0.75"/>
+  <rect x="272" y="444" width="300" height="24" rx="12" fill="#12141c" opacity="0.45"/>
+  <rect x="412" y="568" width="220" height="24" rx="12" fill="#2f6fed" opacity="0.85"/>
+  <rect x="412" y="608" width="300" height="24" rx="12" fill="#2f6fed" opacity="0.5"/>
+
+  <!-- Copy-doc badge, bottom-right — the copy-button feature that's DBV's other
+       defining detail beyond the transcript itself. -->
+  <g filter="url(#cardShadow)">
+    <rect x="700" y="700" width="200" height="200" rx="48" fill="#ffffff"/>
+    <rect x="748" y="748" width="76" height="96" rx="14" fill="none" stroke="#2f6fed" stroke-width="14"/>
+    <rect x="776" y="776" width="76" height="96" rx="14" fill="#2f6fed"/>
+  </g>
+</svg>
