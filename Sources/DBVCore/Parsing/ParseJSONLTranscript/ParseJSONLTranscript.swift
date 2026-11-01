@@ -1,13 +1,8 @@
 // ParseJSONLTranscript — read a session .jsonl into a turn list. STRICTLY READ-ONLY.
-// Dialect matching is delegated to discoveredFormatParsers() (filesystem glob at
-// generate time). This file is only the line loop.
+// Dialect matching is delegated to discoveredFormatParsers(). This file is only the line loop.
 // NEVER DELETE COMMENTS — explain every non-obvious line.
 // Update comments with the code; do not strip them.
 import Foundation
-
-public func parseJSONLTranscript(url: URL) -> [JSONLMessage] {
-    loadJSONLTranscript(url: url).messages
-}
 
 public func parseJSONLTranscript(text: String) -> [JSONLMessage] {
     let parsers = discoveredFormatParsers()

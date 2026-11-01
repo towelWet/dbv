@@ -4,16 +4,5 @@
 import Foundation
 
 public func readJSONLCandidateURLs(_ url: URL) -> [URL] {
-    var seen = Set<String>()
-    var out: [URL] = []
-    func add(_ candidate: URL) {
-        let key = candidate.path
-        guard seen.insert(key).inserted else { return }
-        out.append(candidate)
-    }
-    add(url)
-    add(URL(fileURLWithPath: url.path))
-    add(url.standardizedFileURL)
-    add(url.resolvingSymlinksInPath())
-    return out
+    uniqueURLsByPath([url, URL(fileURLWithPath: url.path), url.standardizedFileURL, url.resolvingSymlinksInPath()])
 }

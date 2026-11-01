@@ -4,15 +4,4 @@
 // Update comments with the code; do not strip them.
 import Foundation
 
-struct ClaudeParser: JSONLLineParser {
-    func recognizes(_ obj: [String: Any]) -> Bool {
-        guard let lineType = obj["type"] as? String else { return false }
-        guard lineType == "user" || lineType == "assistant" else { return false }
-        return obj["message"] is [String: Any]
-    }
-
-    func parse(_ obj: [String: Any], lineIndex: Int) -> JSONLMessage? {
-        guard let message = obj["message"] as? [String: Any] else { return nil }
-        return makeJSONLMessage(line: obj, message: message, lineIndex: lineIndex)
-    }
-}
+struct ClaudeParser: JSONLLineParser {}                  // behavior: +Recognizes and +Parse

@@ -15,12 +15,4 @@ extension AppState {
         fileScopeActive = resolved.startAccessingSecurityScopedResource()
         fileScopeURL = resolved
     }
-
-    func endFileSecurityScope() {
-        if fileScopeActive, let fileScopeURL {
-            fileScopeURL.stopAccessingSecurityScopedResource()
-        }
-        fileScopeActive = false
-        fileScopeURL = nil
-    }
 }

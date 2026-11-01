@@ -12,10 +12,4 @@ extension AppState {
         searchText = ""
         starredOnly = false
     }
-
-    func clearStaleTranscriptFilters(whenSelecting jsonlURL: URL) {
-        guard notesJSONL != jsonlURL else { return }
-        searchText = ""
-        starredOnly = false
-    }
 }

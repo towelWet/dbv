@@ -3,14 +3,15 @@
 // A note is anchored to the turn it sits ABOVE (that turn's uuid), so it keeps its place
 // across re-dumps.
 // NEVER DELETE COMMENTS — explain every non-obvious line.
+// Update comments with the code; do not strip them.
 import SwiftUI
 
 struct InterBubbleNote: View {
     @Bindable var state: AppState
     let uuid: String
-    @State private var draft = ""
+    @State var draft = ""
 
-    private var saved: String { state.notes.record(for: uuid).text }
+    var saved: String { state.notes.record(for: uuid).text }
     private var isEditing: Bool { state.noteEditingUUID == uuid }
 
     var body: some View {
@@ -25,15 +26,5 @@ struct InterBubbleNote: View {
             }
         }
         .id(uuid)                                // scroll target for the notes timeline
-    }
-
-    private func begin() {
-        draft = saved
-        state.noteEditingUUID = uuid
-    }
-
-    private func commit() {
-        state.updateNote(uuid: uuid) { $0.text = draft.trimmingCharacters(in: .whitespacesAndNewlines) }
-        state.noteEditingUUID = nil
     }
 }

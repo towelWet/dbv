@@ -4,13 +4,5 @@
 import Foundation
 
 public func fileOpenScopeCandidateURLs(_ url: URL) -> [URL] {
-    var seen = Set<String>()
-    var out: [URL] = []
-    func add(_ candidate: URL) {
-        let key = candidate.path
-        guard seen.insert(key).inserted else { return }
-        out.append(candidate)
-    }
-    add(url)
-    return out
+    [url]                                              // only opener URL carries the grant
 }

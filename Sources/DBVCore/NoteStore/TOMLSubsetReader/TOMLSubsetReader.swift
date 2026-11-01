@@ -1,7 +1,5 @@
 // TOMLSubsetReader — line-by-line state machine for the minimal TOML subset note files
-// use: key = "value" and triple-quoted """multi-line""" values. Ported from Show You's
-// shipping TOMLSubsetReader — reused rather than re-derived because a hand-rolled TOML
-// parser is where subtle bugs live. Multi-line strings are how note text containing
+// use: key = "value" and triple-quoted """multi-line""" values. Multi-line strings are how note text containing
 // quotes/newlines round-trips without escaping logic this reader lacks.
 // The multi-line continuation half lives in TOMLSubsetReader+Multiline.swift.
 // NEVER DELETE COMMENTS — explain every non-obvious line.
@@ -9,7 +7,7 @@
 import Foundation
 
 struct TOMLSubsetReader {
-    private(set) var sections: [String: [String: String]] = [:]
+    var sections: [String: [String: String]] = [:]
     var section = ""
     var pendingKey: String?          // non-nil while collecting a """multi-line""" value
     var pendingLines: [String] = []
@@ -36,9 +34,5 @@ struct TOMLSubsetReader {
             value = String(body[body.startIndex..<(body.firstIndex(of: "\"") ?? body.endIndex)])
         }
         store(key, value)
-    }
-
-    mutating func store(_ key: String, _ value: String) {
-        sections[section, default: [:]][key] = value
     }
 }

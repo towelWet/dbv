@@ -4,6 +4,7 @@
 // PERFORMANCE: LazyVStack + background parsing; AX element count on a
 // 700-turn session dropped 1384 -> 268. The .jsonl is opened READ-ONLY, always.
 // NEVER DELETE COMMENTS — explain every non-obvious line.
+// Update comments with the code; do not strip them.
 import SwiftUI
 import DBVCore
 
@@ -11,11 +12,11 @@ struct TranscriptView: View {
     @Bindable var state: AppState
     let title: String
     let jsonlURL: URL
-    @State private var messages: [JSONLMessage] = []
-    @State private var loadResult: JSONLLoadResult?
+    @State var messages: [JSONLMessage] = []
+    @State var loadResult: JSONLLoadResult?
     @State private var reloadGeneration = 0
 
-    private var visible: [JSONLMessage] {
+    var visible: [JSONLMessage] {
         filterMessages(messages, search: state.searchText,
                        starredOnly: state.starredOnly, notes: state.notes)
     }
@@ -37,29 +38,6 @@ struct TranscriptView: View {
             let result = await runTranscriptLoad(state: state, jsonlURL: jsonlURL)
             loadResult = result
             messages = result.messages
-        }
-    }
-
-    @ViewBuilder
-    private var transcriptBody: some View {
-        if loadResult == nil {
-            ProgressView("Reading jsonl…")
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-        } else if messages.isEmpty {
-            EmptyTranscriptView(
-                filename: jsonlURL.lastPathComponent,
-                parsedCount: messages.count,
-                readFailed: loadResult?.readFailed ?? false,
-                sourceLineCount: loadResult?.sourceLineCount ?? 0
-            )
-        } else if visible.isEmpty {
-            ContentUnavailableView(
-                "No turns match",
-                systemImage: "magnifyingglass",
-                description: Text("Clear the search box or turn off starred-only to see all \(messages.count) turns.")
-            )
-        } else {
-            TranscriptScroll(state: state, messages: visible)
         }
     }
 }

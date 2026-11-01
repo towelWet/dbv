@@ -5,15 +5,6 @@ import AppKit
 import Foundation
 
 extension AppDelegate {
-    func installOpenDocumentsAppleEventHandler() {
-        NSAppleEventManager.shared().setEventHandler(
-            self,
-            andSelector: #selector(handleOpenDocuments(_:withReplyEvent:)),
-            forEventClass: AEEventClass(kCoreEventClass),
-            andEventID: AEEventID(kAEOpenDocuments)
-        )
-    }
-
     @objc func handleOpenDocuments(_ event: NSAppleEventDescriptor,
                                    withReplyEvent reply: NSAppleEventDescriptor) {
         guard let list = event.paramDescriptor(forKeyword: keyDirectObject) else { return }
@@ -23,10 +14,5 @@ extension AppDelegate {
             _ = url.startAccessingSecurityScopedResource()
             queuePreparedDocument(prepareDocumentOpen(url))
         }
-    }
-
-    func queuePreparedDocument(_ prep: DocumentOpenPrepared) {
-        pendingDocumentOpen = prep
-        Task { @MainActor in self.adoptPendingIfAttached() }
     }
 }
