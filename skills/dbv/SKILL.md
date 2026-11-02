@@ -10,7 +10,7 @@ Read-only jsonl transcript viewer. **Never rewrite a dump so DBV will open it.**
 ## EXECUTE
 
 ```bash
-~/.claude/skills/dumpboth/DBV/build.command
+~/.claude/skills/dbv/DBV/build.command
 ```
 
 Installs `/Applications/DBV.app`, registers it as the default `.jsonl` handler. Generator runs first: glob `Formats/*/*Parser.swift` → `DiscoveredFormatParsers.generated.swift`.
@@ -33,7 +33,7 @@ Do **not** add the name to `ParseJSONLTranscript.swift`. That file only loops `d
 ## How to verify
 
 ```bash
-~/.claude/skills/dumpboth/DBV/test.command
+~/.claude/skills/dbv/DBV/test.command
 ```
 
 Do **not** run bare `swift build` / `swift test` in the DBV tree — that creates a multi‑GB `.build` on the internal disk. Always use `build.command` or `test.command`.
