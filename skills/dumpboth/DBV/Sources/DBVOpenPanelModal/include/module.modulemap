@@ -1,0 +1,4 @@
+module DBVOpenPanelModal {
+    header "GodLogOpenPanelModal.h"
+    export *
+}

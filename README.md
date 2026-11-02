@@ -1,33 +1,27 @@
 # DBV
 
-Mac chat viewer for Claude chats you save with
+Claude Code skill and Mac app: `/dbv` builds and maintains chat viewer for chats you save with
 [dumpboth](https://github.com/towelWet/dumpboth).
 
-Sessions on the left, transcript on the right. Search, star, copy, and add notes.
-Saved `.jsonl` files are opened read-only.
+![DBV showing saved chat](docs/images/dbv.png)
 
-![DBV showing that same saved chat](docs/images/dbv.png)
-
-## Build
+## Install
 
 ```sh
-./build.command      # needs Swift 6.2+; builds for Apple silicon, installs to /Applications/DBV.app
-swift test           # run tests
+cp -R skills/* ~/.claude/skills/
 ```
 
-Build is ad-hoc signed, so it only runs on Mac that built it unless you sign it yourself.
+Then `/dbv` in Claude Code, or build directly:
 
-## Where things live
+```sh
+~/.claude/skills/dumpboth/DBV/build.command
+```
 
-| What | Where |
-|---|---|
-| Dumps it reads | `~/Old Chats/` |
-| Your notes | `~/.claude/skills/dumpboth/db/` |
+App code lives at `skills/dumpboth/DBV/`, beside dumpboth, because that is where this skill keeps it.
+Build needs Swift 6.2+ on Apple silicon and installs to `/Applications/DBV.app`.
+
+Full instructions: [skills/dbv/SKILL.md](skills/dbv/SKILL.md).
 
 ## See also
 
-[dumpconvert](https://github.com/towelWet/dumpconvert): turn saved chats into a training dataset.
-
-## License
-
-MIT
+[dumpconvert](https://github.com/towelWet/dumpconvert): turn saved chats into training dataset.

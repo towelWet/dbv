@@ -1,0 +1,7 @@
+{"kind":"user","seq":0,"text":"list files","ts":1}
+{"kind":"usage","seq":1,"tokens_in":1,"tokens_out":1,"ts":2}
+{"kind":"tool_call","name":"bash","input":"{\"command\":\"ls\"}","seq":2,"ts":3}
+{"kind":"tool_result","is_error":false,"seq":3,"tool_name":"bash","tool_output":"a.txt\n","ts":4}
+{"kind":"text","text":"listed ok"}
+{"kind":"thinking","text":"skip me"}
+{"kind":"done"}

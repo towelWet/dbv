@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleExecutable</key>
+	<string>DBV</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.TowelWare.DBV</string>
+	<key>CFBundleName</key>
+	<string>DBV</string>
+	<key>CFBundleDisplayName</key>
+	<string>DBV — Dumpboth Viewer</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1.0</string>
+	<key>CFBundleVersion</key>
+	<string>0.1.0</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>26.0</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>NSQuitAlwaysKeepsWindows</key>
+	<false/>
+	<!-- Registers DBV as the handler for .jsonl (system UTI org.jsonlines.jsonl, already
+	     declared elsewhere — e.g. by Unfold — as public.json/public.plain-text). Owner
+	     rank + LSHandlerRank Owner is what lets `duti -s com.TowelWare.DBV .jsonl all`
+	     make DBV the DEFAULT opener, taking over from whatever was set before (Tedit).
+	     NEVER DELETE COMMENTS. -->
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>JSON Lines Document</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.jsonlines.jsonl</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Folder</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.folder</string>
+			</array>
+		</dict>
+	</array>
+	<!-- Imported (not exported) declaration: guarantees .jsonl routing even on a machine
+	     where nothing else has declared org.jsonlines.jsonl yet. Safe to coexist with
+	     another app's export of the same UTI. -->
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>org.jsonlines.jsonl</string>
+			<key>UTTypeDescription</key>
+			<string>JSON Lines</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.json</string>
+				<string>public.plain-text</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>jsonl</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
