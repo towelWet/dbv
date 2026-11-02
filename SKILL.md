@@ -55,4 +55,4 @@ Expect bubbles, not a white window. If still white: quit DBV (`killall DBV`) and
 - rebuild DBV after parser work
 - add a new jsonl dialect
 
-Publishing: upload this real skill folder, with private info removed. Never publish rewritten copy.
+Publishing: before upload, this skill must have no leaks (private paths, personal names, emails, drive paths, private chat notes, blocked-folder paths, machine-only rules). Remove only the leaks, then upload this real skill folder as it is. dumpboth, dbv, and dumpconvert stay three repos and three skills; dumpchat and dumpjsonl stay nested inside dumpboth. No rewritten copy, no invented skills/ parent, no extra release or staging folders.
