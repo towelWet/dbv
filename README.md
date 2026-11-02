@@ -8,9 +8,9 @@ DBV is a Mac chat viewer for Claude chats you save with [dumpboth](https://githu
 
 For example, Claude Code:
 
-Drag the dbv folder into ~/.claude/skills
+Drag this repo into ~/.claude/skills
 
-![Dragging the dbv folder into ~/.claude/skills](docs/images/install.gif)
+![Dragging this repo into ~/.claude/skills](docs/images/install.gif)
 
 Then run `/dbv`.
 
